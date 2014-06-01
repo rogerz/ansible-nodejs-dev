@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  vars:
+    - node_version: 'v0.10.28'
+  tasks:
+    - name: Install node.js package
+      npm: name={{ item }} global=yes executable=~/.nvm/{{ node_version }}/bin/npm
+      with_items:
+        - node-inspector
+        - grunt-cli
+        - serve
+        - bower
+        - cnpm
+      tags: npm
